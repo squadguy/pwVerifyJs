@@ -14,10 +14,14 @@
 		<div id = "areTheSame"></div>
 
 	<script>
-		document.getElementById('password1');
-		document.getElementById('password2');
-		document.getElementById('submit');
-		document.getElementById('toggle');
+		var password1 = document.getElementById('password1');
+		var password2 = document.getElementById('password2');
+		var submit = document.getElementById('submit');
+		var toggle = document.getElementById('toggle');
+
+		toggle.checked = false;
+		password1.value = "";
+		password2.value = "";
 
 		var is1Empty = function()
 		{
