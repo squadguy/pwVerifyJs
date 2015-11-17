@@ -14,15 +14,19 @@
 		<div id = "areTheSame"></div>
 
 	<script>
+		//Get progammatic acces
 		var password1 = document.getElementById('password1');
 		var password2 = document.getElementById('password2');
 		var submit = document.getElementById('submit');
 		var toggle = document.getElementById('toggle');
 
+
+		//Ensure everything on page is blank and unchecked
 		toggle.checked = false;
 		password1.value = "";
 		password2.value = "";
 
+		//Determines if first password field is empty
 		var is1Empty = function()
 		{
 			var isEmpty = true;
@@ -34,7 +38,8 @@
 			
 			return isEmpty;
 		}
-			
+		
+		//Determins if second password field is empty
 		var is2Empty = function()
 		{
 			var isEmpty = true;
@@ -46,7 +51,8 @@
 			
 			return isEmpty;
 		}
-
+		
+		//Determines if the password fiels are the same
 		var areTheSame = function()
 		{
 			var isTheSame = false;
@@ -65,8 +71,8 @@
 
 		}
 		
-		//console.log(areTheSame());
 
+		//Reveals passwords as plain text
 		toggle.onclick = function()
 		{
 			if(password1.type === "password")
@@ -81,7 +87,35 @@
 			}
 		}
 	
+		//verify if passwords are same 
+		password1.onblur = function()
+		{
+			if(!is2Empty() && is1Empty())
+				console.log("You must enter a value into password1");
+			else if (!is2Empty())
+			{
+				if(areTheSame())
+					console.log('equal');
+				else
+					console.log('not equal');
+			}
+		}
+		
+		//verify passwords are the same
+		password2.onblur = function()
+		{
+			if(!is1Empty() && is2Empty())
+				console.log("You must enter a value for pw2");
+			else if(!is1Empty())
+			{
+				if(areTheSame())
+					console.log("=");
+				else
+					console.log("!=");
+			}
+		}
 
+		//verify passwords are the same
 		submit.onclick = function()
 		{
 			if(is1Empty() === false && is2Empty() === false)
